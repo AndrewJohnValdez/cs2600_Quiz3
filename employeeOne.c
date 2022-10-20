@@ -15,7 +15,6 @@ PtrToEmployee searchEmployeeByNumber(PtrToConstEmployee ptr, int tableSize, long
  return NULL; //this will only happen if no Employee number matches in loop above 
 } 
 
-
 //Essentially the same functionality as above but comparing strings to check if equal 
 
 PtrToEmployee searchEmployeeByName(PtrToConstEmployee ptr, int tableSize, char * targetName){ 
@@ -29,3 +28,27 @@ PtrToEmployee searchEmployeeByName(PtrToConstEmployee ptr, int tableSize, char *
  } 
  return NULL; 
 } 
+
+PtrToEmployee searchEmployeeByPhone(PtrToConstEmployee ptr, int tableSize, char * targetPhoneNumber) {
+
+ const PtrToConstEmployee endPtr = ptr + tableSize;
+
+     for(; ptr < endPtr; ptr++)
+    {
+       if(strcmp(ptr->phone, targetPhoneNumber) == 0)
+            return (PtrToEmployee) ptr;
+    }
+     return NULL;
+}
+
+PtrToEmployee searchEmployeeBySalary(PtrToConstEmployee ptr, int tableSize, double targetSalary) {
+    
+    const PtrToConstEmployee endPtr = ptr + tableSize;
+
+    for(; ptr < endPtr; ptr++)
+    {
+        if(ptr->salary == targetSalary)
+            return (PtrToEmployee) ptr;
+    }
+    return NULL;
+}
